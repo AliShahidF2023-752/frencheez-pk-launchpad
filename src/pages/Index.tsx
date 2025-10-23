@@ -1,19 +1,17 @@
-import { Header } from "@/components/Header";
-import { Hero } from "@/components/Hero";
-import { Features } from "@/components/Features";
-import { HowItWorks } from "@/components/HowItWorks";
-import { CTA } from "@/components/CTA";
-import { Footer } from "@/components/Footer";
+import { AppHeader } from "@/components/AppHeader";
+import { SearchBar } from "@/components/SearchBar";
+import { CategoryNav } from "@/components/CategoryNav";
+import { MarketplaceGrid } from "@/components/MarketplaceGrid";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
-      <Header />
-      <Hero />
-      <Features />
-      <HowItWorks />
-      <CTA />
-      <Footer />
+    <div className="min-h-screen bg-background">
+      <AppHeader />
+      <div className="pt-16">
+        <SearchBar />
+        <CategoryNav />
+        <MarketplaceGrid />
+      </div>
     </div>
   );
 };
