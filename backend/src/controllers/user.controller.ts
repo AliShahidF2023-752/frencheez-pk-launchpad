@@ -1,7 +1,7 @@
 import { Response } from 'express';
 import { AuthRequest } from '../middleware/auth';
 import prisma from '../config/database';
-import { hashPassword } from '../utils/password';
+import { hashPassword, comparePassword } from '../utils/password';
 
 export const getAllUsers = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
@@ -209,8 +209,7 @@ export const changePassword = async (req: AuthRequest, res: Response): Promise<v
     }
 
     // Verify current password
-    const bcrypt = require('bcryptjs');
-    const isValidPassword = await bcrypt.compare(currentPassword, user.password);
+    const isValidPassword = await comparePassword(currentPassword, user.password);
     
     if (!isValidPassword) {
       res.status(400).json({ error: 'Current password is incorrect' });
