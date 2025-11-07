@@ -239,6 +239,15 @@ Then start each service in separate terminals using the commands above.
 - **GitHub Repository**: https://github.com/AliShahidF2023-752/frencheez-pk-launchpad
 - **Original Lovable Project**: https://lovable.dev/projects/e8ba2c55-c432-4c0e-a3c6-8557aae34f7f
 
+## 📚 Additional Documentation
+
+- **[DEPLOYMENT.md](DEPLOYMENT.md)** - Comprehensive deployment guide for multiple platforms
+- **[ARCHITECTURE.md](ARCHITECTURE.md)** - System architecture and design overview
+- **[IMPLEMENTATION_SUMMARY.md](IMPLEMENTATION_SUMMARY.md)** - Development progress and features
+- **[backend/README.md](backend/README.md)** - Backend API documentation
+- **[admin-dashboard/README.md](admin-dashboard/README.md)** - Admin dashboard documentation
+- **[customer-frontend/README.md](customer-frontend/README.md)** - Customer frontend documentation
+
 ---
 
 ## ✨ Features
@@ -824,56 +833,41 @@ npm run build
 
 ## 🚀 Deployment Instructions
 
-### Deploying Backend to Render
+For detailed deployment instructions including multiple platform options (Render, Railway, Vercel, Docker), troubleshooting, and security considerations, see **[DEPLOYMENT.md](DEPLOYMENT.md)**.
 
-1. Create account on [Render](https://render.com)
-2. Create new Web Service
-3. Connect GitHub repository
-4. Configure:
-   - **Build Command**: `cd backend && npm install && npx prisma generate && npm run build`
-   - **Start Command**: `cd backend && npm start`
-   - **Environment**: Node
-5. Add environment variables from `.env.example`
-6. Deploy
+### Quick Deployment Summary
 
-### Deploying Backend to Railway
+#### Option 1: Render (Backend) + Vercel (Frontend)
+1. **Database**: Create PostgreSQL on Render
+2. **Backend**: Deploy to Render Web Service from `backend/` directory
+3. **Admin**: Deploy to Vercel from `admin-dashboard/` directory
+4. **Customer**: Deploy to Vercel from `customer-frontend/` directory
+5. **Configure**: Update CORS_ORIGIN with frontend URLs
 
-1. Create account on [Railway](https://railway.app)
-2. Create new project from GitHub repo
-3. Add PostgreSQL database service
-4. Configure backend service:
-   - **Build Command**: `cd backend && npm install && npx prisma generate && npm run build`
-   - **Start Command**: `cd backend && npm start`
-5. Add environment variables
-6. Deploy
+#### Option 2: Railway (Full Stack)
+1. Create Railway project from GitHub
+2. Add PostgreSQL database
+3. Configure services with build/start commands
+4. Deploy frontends to Vercel
 
-### Deploying Frontend to Vercel
-
-1. Create account on [Vercel](https://vercel.com)
-2. Import GitHub repository
-3. Configure for Admin Dashboard:
-   - **Root Directory**: `admin-dashboard`
-   - **Framework Preset**: Vite
-   - **Build Command**: `npm run build`
-   - **Output Directory**: `dist`
-   - **Environment Variable**: `VITE_API_URL` (your backend URL)
-4. Repeat for Customer Frontend with root directory: `customer-frontend`
+#### Option 3: Docker Compose
+1. Build Docker images for all services
+2. Run with `docker-compose up -d`
+3. Access services on configured ports
 
 ### Deployment Configuration Files
 
-**vercel.json** (add to admin-dashboard/ and customer-frontend/):
-```json
-{
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "framework": "vite"
-}
-```
+The repository includes:
+- ✅ `vercel.json` in `admin-dashboard/` and `customer-frontend/`
+- ✅ `Procfile` in `backend/` for Heroku/Render
 
-**Procfile** (add to backend/ for Heroku):
-```
-web: npm start
-```
+### Post-Deployment
+
+After deploying:
+1. Run database migrations: `npx prisma migrate deploy`
+2. Create admin user via SQL or Prisma Studio
+3. Test all endpoints and features
+4. Update README with live deployment URLs
 
 ---
 
