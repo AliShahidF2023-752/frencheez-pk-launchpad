@@ -1,26 +1,15 @@
 {
-  "name": "frencheez-pk-launchpad-monorepo",
+  "name": "admin-dashboard",
   "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "install:all": "cd backend && npm install && cd ../admin-dashboard && npm install && cd ../customer-frontend && npm install",
-    "dev:backend": "cd backend && npm run dev",
-    "dev:admin": "cd admin-dashboard && npm run dev",
-    "dev:customer": "cd customer-frontend && npm run dev",
-    "build:backend": "cd backend && npm run build",
-    "build:admin": "cd admin-dashboard && npm run build",
-    "build:customer": "cd customer-frontend && npm run build",
-    "build:all": "npm run build:backend && npm run build:admin && npm run build:customer",
-    "start:backend": "cd backend && npm start",
-    "prisma:generate": "cd backend && npx prisma generate",
-    "prisma:migrate": "cd backend && npx prisma migrate dev",
-    "prisma:studio": "cd backend && npx prisma studio"
+    "dev": "vite",
+    "build": "vite build",
+    "build:dev": "vite build --mode development",
+    "lint": "eslint .",
+    "preview": "vite preview"
   },
-  "keywords": ["e-commerce", "full-stack", "monorepo"],
-  "author": "",
-  "license": "ISC",
-  "description": "Complete e-commerce application with backend, admin dashboard, and customer frontend",
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
     "@radix-ui/react-accordion": "^1.2.11",

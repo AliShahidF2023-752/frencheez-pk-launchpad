@@ -7,10 +7,31 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies
 node_modules
 dist
 dist-ssr
 *.local
+
+# Backend
+backend/node_modules
+backend/dist
+backend/.env
+backend/.env.local
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Admin Dashboard
+admin-dashboard/node_modules
+admin-dashboard/dist
+admin-dashboard/.env
+admin-dashboard/.env.local
+
+# Customer Frontend  
+customer-frontend/node_modules
+customer-frontend/dist
+customer-frontend/.env
+customer-frontend/.env.local
 
 # Editor directories and files
 .vscode/*

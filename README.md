@@ -1,73 +1,170 @@
-# Welcome to your Lovable project
+# E-Commerce Full-Stack Application
 
-## Project info
+A complete, production-ready e-commerce platform with backend API, admin dashboard, and customer-facing frontend.
 
-**URL**: https://lovable.dev/projects/e8ba2c55-c432-4c0e-a3c6-8557aae34f7f
+## 🚀 Project Structure
 
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/e8ba2c55-c432-4c0e-a3c6-8557aae34f7f) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+frencheez-pk-launchpad/
+├── backend/              # Node.js/Express/TypeScript REST API
+├── admin-dashboard/      # React admin management panel
+├── customer-frontend/    # Customer-facing React application
+├── package.json          # Monorepo scripts
+└── README.md            # This file
 ```
 
-**Edit a file directly in GitHub**
+## ✨ Features
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Backend API
+- ✅ JWT Authentication & Authorization
+- ✅ PostgreSQL + Prisma ORM
+- ✅ RESTful API with Swagger docs
+- ✅ File upload handling
+- ✅ Security (Helmet, CORS, rate limiting)
+- ✅ Email service integration
+- ✅ Role-based access control
 
-**Use GitHub Codespaces**
+### Admin Dashboard
+- ✅ Modern React + TypeScript UI
+- ✅ Product management (CRUD)
+- ✅ Category management
+- ✅ Order management & status updates
+- ✅ User management
+- ✅ Media library
+- ✅ Dashboard analytics
+- ✅ Responsive design
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Customer Frontend
+- ✅ Product catalog & search
+- ✅ Product detail pages
+- ✅ Shopping cart
+- ✅ User authentication
+- ✅ Order placement
+- ✅ Order history
+- ✅ Responsive design
 
-## What technologies are used for this project?
+## 🛠️ Tech Stack
 
-This project is built with:
+- **Backend**: Node.js, Express, TypeScript, Prisma, PostgreSQL
+- **Frontend**: React 18, TypeScript, Vite, shadcn-ui, Tailwind CSS
+- **Auth**: JWT
+- **Database**: PostgreSQL
+- **ORM**: Prisma
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🚦 Quick Start
 
-## How can I deploy this project?
+### Prerequisites
+- Node.js v18+
+- PostgreSQL
+- npm or yarn
 
-Simply open [Lovable](https://lovable.dev/projects/e8ba2c55-c432-4c0e-a3c6-8557aae34f7f) and click on Share -> Publish.
+### Installation
 
-## Can I connect a custom domain to my Lovable project?
+1. **Install all dependencies**
+```bash
+npm run install:all
+```
 
-Yes, you can!
+2. **Set up Backend**
+```bash
+cd backend
+cp .env.example .env
+# Edit .env with your database credentials
+npx prisma generate
+npx prisma migrate dev
+```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+3. **Set up environment files**
+```bash
+# Admin dashboard
+cd admin-dashboard
+cp .env.example .env
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+# Customer frontend
+cd customer-frontend
+cp .env.example .env
+```
+
+### Running Development Servers
+
+Run all applications in separate terminals:
+
+```bash
+# Terminal 1 - Backend (port 5000)
+npm run dev:backend
+
+# Terminal 2 - Admin Dashboard (port 3000)
+npm run dev:admin
+
+# Terminal 3 - Customer Frontend (port 5173)
+npm run dev:customer
+```
+
+### Creating an Admin User
+
+After setting up the database:
+
+```sql
+-- Register via API first, then run:
+UPDATE "User" SET role = 'ADMIN' WHERE email = 'admin@example.com';
+```
+
+Or use Prisma Studio:
+```bash
+npm run prisma:studio
+```
+
+## 📚 Documentation
+
+- **Backend API**: http://localhost:5000/api-docs (Swagger)
+- **Backend README**: [backend/README.md](backend/README.md)
+- **Admin Dashboard README**: [admin-dashboard/README.md](admin-dashboard/README.md)
+- **Customer Frontend README**: [customer-frontend/README.md](customer-frontend/README.md)
+
+## 🏗️ Building for Production
+
+```bash
+# Build all applications
+npm run build:all
+
+# Or build individually
+npm run build:backend
+npm run build:admin
+npm run build:customer
+```
+
+## 📡 API Endpoints
+
+Main endpoints available:
+
+- **Auth**: `/api/auth/register`, `/api/auth/login`, `/api/auth/logout`
+- **Products**: `/api/products` (GET, POST, PUT, DELETE)
+- **Categories**: `/api/categories` (GET, POST, PUT, DELETE)
+- **Orders**: `/api/orders` (GET, POST, PUT)
+- **Users**: `/api/users` (GET, PUT, DELETE)
+- **Upload**: `/api/upload/single`, `/api/upload/multiple`
+
+## 🔒 Security
+
+- Password hashing (bcrypt)
+- JWT token authentication
+- Role-based authorization
+- Input validation
+- Rate limiting
+- CORS protection
+- SQL injection prevention (Prisma)
+- XSS protection
+- Helmet.js security headers
+
+## 📝 License
+
+ISC
+
+## 🤝 Original Lovable Project
+
+This project was bootstrapped with Lovable.
+
+**Project URL**: https://lovable.dev/projects/e8ba2c55-c432-4c0e-a3c6-8557aae34f7f
+
+The original frontend has been preserved in the `customer-frontend` directory and enhanced with additional features.
+
