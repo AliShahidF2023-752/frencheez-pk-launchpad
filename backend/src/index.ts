@@ -40,6 +40,9 @@ app.use(cors(corsOptions));
 // Body parsing middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+// Note: Cookie parser is used for potential session data, but authentication
+// uses JWT tokens in Authorization headers, which provides CSRF protection
+// by design (tokens in headers are not automatically sent by browsers)
 app.use(cookieParser());
 
 // Rate limiting

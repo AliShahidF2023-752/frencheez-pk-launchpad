@@ -172,14 +172,16 @@ See `.env.example` for all required environment variables:
 
 ## Security Best Practices
 
-- All passwords are hashed using bcrypt
-- JWT tokens with expiration
-- Role-based access control
-- Input validation on all endpoints
-- Rate limiting to prevent abuse
-- CORS configuration
+- All passwords are hashed using bcrypt (10 rounds)
+- JWT tokens with expiration (access & refresh tokens)
+- Role-based access control (CUSTOMER, ADMIN, SUPER_ADMIN)
+- Input validation on all endpoints (express-validator)
+- Rate limiting to prevent abuse (100 requests per 15 minutes)
+- CORS configuration with allowed origins
 - Helmet.js security headers
 - SQL injection protection via Prisma ORM
+- XSS protection through input sanitization
+- CSRF protection: JWT tokens in Authorization headers (not cookies) provide inherent CSRF protection as browsers don't automatically include these headers in cross-origin requests
 
 ## Development
 
